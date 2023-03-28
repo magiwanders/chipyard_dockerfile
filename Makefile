@@ -1,10 +1,15 @@
-version=magiwanders/chipyard:0.1
+version=magiwanders/chipyard:0.3
 
-all:
+default: help
+
+help:
+	cat README.md
+
+build:
 	docker image build -t $(version) .
 	
 container: 
-	docker container create -it --name chipyard $(version) bash
+	docker container create -it --mount type=bind,source='$(shell pwd)'/user,target=/home/user --name chipyard $(version) bash
 	docker container ls -a
 
 start:
