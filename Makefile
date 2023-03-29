@@ -1,4 +1,6 @@
-version=magiwanders/chipyard:0.3
+user = magiwanders
+name = chipyard
+version = 0.4
 
 default: help
 
@@ -6,21 +8,28 @@ help:
 	cat README.md
 
 build:
-	docker image build -t $(version) .
+	docker image build -t $(user)/$(name):$(version) .
+
+rebuild:
+	make clean
+	make build
+	make container
+	make start
 	
 container: 
-	docker container create -it --mount type=bind,source='$(shell pwd)'/user,target=/home/user --name chipyard $(version) bash
+	docker container create -e DISPLAY=host.docker.internal:0 -v /tmp/.X11-unix:/tmp/.X11-unix -it --mount type=bind,source='$(shell pwd)'/host,target=/home/host --name $(name) $(user)/$(name):$(version) 
 	docker container ls -a
 
 start:
-	docker container start -i chipyard
+	open -a XQuartz
+	xhost + 127.0.0.1
+	docker container start -i $(name)
 
 clean:
-	docker container stop chipyard
-	docker container rm chipyard
+	docker container stop $(name)
+	docker container rm $(name)
 	docker container ls -a
 
 uninstall:
-	docker container rm chipyard
-	docker image rm $(version)
-	
+	docker container rm $(name)
+	docker image rm $(user)/$(name):$(version)
