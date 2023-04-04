@@ -1,0 +1,18 @@
+[WRN:PA0205] /home/host/serv/serv_top.v:3:1: No timescale set for "serv_top".
+[WRN:PA0205] /home/host/serv/serv_aligner.v:1:1: No timescale set for "serv_aligner".
+[WRN:PA0205] /home/host/serv/serv_alu.v:2:1: No timescale set for "serv_alu".
+[WRN:PA0205] /home/host/serv/serv_bufreg.v:1:1: No timescale set for "serv_bufreg".
+[WRN:PA0205] /home/host/serv/serv_bufreg2.v:1:1: No timescale set for "serv_bufreg2".
+[WRN:PA0205] /home/host/serv/serv_compdec.v:10:1: No timescale set for "serv_compdec".
+[WRN:PA0205] /home/host/serv/serv_csr.v:2:1: No timescale set for "serv_csr".
+[WRN:PA0205] /home/host/serv/serv_ctrl.v:2:1: No timescale set for "serv_ctrl".
+[WRN:PA0205] /home/host/serv/serv_decode.v:2:1: No timescale set for "serv_decode".
+[WRN:PA0205] /home/host/serv/serv_immdec.v:2:1: No timescale set for "serv_immdec".
+[WRN:PA0205] /home/host/serv/serv_mem_if.v:2:1: No timescale set for "serv_mem_if".
+[WRN:PA0205] /home/host/serv/serv_rf_if.v:2:1: No timescale set for "serv_rf_if".
+[WRN:PA0205] /home/host/serv/serv_rf_ram_if.v:2:1: No timescale set for "serv_rf_ram_if".
+[WRN:PA0205] /home/host/serv/serv_rf_ram.v:1:1: No timescale set for "serv_rf_ram".
+[WRN:PA0205] /home/host/serv/serv_rf_top.v:3:1: No timescale set for "serv_rf_top".
+[WRN:PA0205] /home/host/serv/serv_state.v:1:1: No timescale set for "serv_state".
+[WRN:PA0205] /home/host/serv/serv_synth_wrapper.v:3:1: No timescale set for "serv_synth_wrapper".
+[WRN:EL0534] Cmd line top level is not a top level "serv_top".

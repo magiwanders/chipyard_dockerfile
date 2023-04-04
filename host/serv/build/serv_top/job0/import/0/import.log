@@ -1,0 +1,119 @@
+[INF:CM0023] Creating log file /home/host/serv/build/serv_top/job0/import/0/slpp_all/surelog.log.
+
+[WRN:PA0205] /home/host/serv/serv_top.v:3:1: No timescale set for "serv_top".
+
+[WRN:PA0205] /home/host/serv/serv_aligner.v:1:1: No timescale set for "serv_aligner".
+
+[WRN:PA0205] /home/host/serv/serv_alu.v:2:1: No timescale set for "serv_alu".
+
+[WRN:PA0205] /home/host/serv/serv_bufreg.v:1:1: No timescale set for "serv_bufreg".
+
+[WRN:PA0205] /home/host/serv/serv_bufreg2.v:1:1: No timescale set for "serv_bufreg2".
+
+[WRN:PA0205] /home/host/serv/serv_compdec.v:10:1: No timescale set for "serv_compdec".
+
+[WRN:PA0205] /home/host/serv/serv_csr.v:2:1: No timescale set for "serv_csr".
+
+[WRN:PA0205] /home/host/serv/serv_ctrl.v:2:1: No timescale set for "serv_ctrl".
+
+[WRN:PA0205] /home/host/serv/serv_decode.v:2:1: No timescale set for "serv_decode".
+
+[WRN:PA0205] /home/host/serv/serv_immdec.v:2:1: No timescale set for "serv_immdec".
+
+[WRN:PA0205] /home/host/serv/serv_mem_if.v:2:1: No timescale set for "serv_mem_if".
+
+[WRN:PA0205] /home/host/serv/serv_rf_if.v:2:1: No timescale set for "serv_rf_if".
+
+[WRN:PA0205] /home/host/serv/serv_rf_ram_if.v:2:1: No timescale set for "serv_rf_ram_if".
+
+[WRN:PA0205] /home/host/serv/serv_rf_ram.v:1:1: No timescale set for "serv_rf_ram".
+
+[WRN:PA0205] /home/host/serv/serv_rf_top.v:3:1: No timescale set for "serv_rf_top".
+
+[WRN:PA0205] /home/host/serv/serv_state.v:1:1: No timescale set for "serv_state".
+
+[WRN:PA0205] /home/host/serv/serv_synth_wrapper.v:3:1: No timescale set for "serv_synth_wrapper".
+
+[INF:CP0300] Compilation...
+
+[INF:CP0303] /home/host/serv/serv_aligner.v:1:1: Compile module "work@serv_aligner".
+
+[INF:CP0303] /home/host/serv/serv_alu.v:2:1: Compile module "work@serv_alu".
+
+[INF:CP0303] /home/host/serv/serv_bufreg.v:1:1: Compile module "work@serv_bufreg".
+
+[INF:CP0303] /home/host/serv/serv_bufreg2.v:1:1: Compile module "work@serv_bufreg2".
+
+[INF:CP0303] /home/host/serv/serv_compdec.v:10:1: Compile module "work@serv_compdec".
+
+[INF:CP0303] /home/host/serv/serv_csr.v:2:1: Compile module "work@serv_csr".
+
+[INF:CP0303] /home/host/serv/serv_ctrl.v:2:1: Compile module "work@serv_ctrl".
+
+[INF:CP0303] /home/host/serv/serv_decode.v:2:1: Compile module "work@serv_decode".
+
+[INF:CP0303] /home/host/serv/serv_immdec.v:2:1: Compile module "work@serv_immdec".
+
+[INF:CP0303] /home/host/serv/serv_mem_if.v:2:1: Compile module "work@serv_mem_if".
+
+[INF:CP0303] /home/host/serv/serv_rf_if.v:2:1: Compile module "work@serv_rf_if".
+
+[INF:CP0303] /home/host/serv/serv_rf_ram.v:1:1: Compile module "work@serv_rf_ram".
+
+[INF:CP0303] /home/host/serv/serv_rf_ram_if.v:2:1: Compile module "work@serv_rf_ram_if".
+
+[INF:CP0303] /home/host/serv/serv_rf_top.v:3:1: Compile module "work@serv_rf_top".
+
+[INF:CP0303] /home/host/serv/serv_state.v:1:1: Compile module "work@serv_state".
+
+[INF:CP0303] /home/host/serv/serv_synth_wrapper.v:3:1: Compile module "work@serv_synth_wrapper".
+
+[INF:CP0303] /home/host/serv/serv_top.v:3:1: Compile module "work@serv_top".
+
+[INF:CP0302] Compile class "work@mailbox".
+
+[INF:CP0302] Compile class "work@process".
+
+[INF:CP0302] Compile class "work@semaphore".
+
+[INF:EL0526] Design Elaboration...
+
+[INF:CP0335] /home/host/serv/serv_top.v:200:16: Compile generate block "work@serv_top.genblk1".
+
+[INF:CP0335] /home/host/serv/serv_top.v:217:16: Compile generate block "work@serv_top.genblk2".
+
+[INF:CP0335] /home/host/serv/serv_state.v:185:7: Compile generate block "work@serv_top.state.genblk2".
+
+[INF:CP0335] /home/host/serv/serv_decode.v:236:7: Compile generate block "work@serv_top.decode.genblk1".
+
+[INF:CP0335] /home/host/serv/serv_immdec.v:36:7: Compile generate block "work@serv_top.immdec.genblk1".
+
+[INF:CP0335] /home/host/serv/serv_ctrl.v:56:7: Compile generate block "work@serv_top.ctrl.genblk1".
+
+[INF:CP0335] /home/host/serv/serv_rf_if.v:56:4: Compile generate block "work@serv_top.rf_if.genblk1".
+
+[INF:CP0335] /home/host/serv/serv_top.v:536:7: Compile generate block "work@serv_top.genblk3".
+
+[INF:CP0303] /home/host/serv/serv_top.v:3:1: Compile module "work@serv_top".
+
+[INF:CP0335] /home/host/serv/serv_top.v:651:12: Compile generate block "work@serv_top.genblk4".
+
+[WRN:EL0534] Cmd line top level is not a top level "serv_top".
+
+[NTE:EL0503] /home/host/serv/serv_top.v:3:1: Top level module "work@serv_top".
+
+[NTE:EL0508] Nb Top level modules: 1.
+
+[NTE:EL0509] Max instance depth: 3.
+
+[NTE:EL0510] Nb instances: 11.
+
+[NTE:EL0511] Nb leaf instances: 0.
+
+[INF:UH0706] Creating UHDM Model...
+
+[  FATAL] : 0
+[ SYNTAX] : 0
+[  ERROR] : 0
+[WARNING] : 18
+[   NOTE] : 5

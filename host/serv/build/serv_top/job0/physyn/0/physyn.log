@@ -1,0 +1,387 @@
+OpenROAD v2.0-7480-g8a4065b09 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+Reading liberty file for fast: /home/siliconcompiler/third_party/pdks/skywater/skywater130/libs/sky130hd/v0_0_2/lib/sky130_fd_sc_hd__ff_100C_1v95.lib.gz
+Reading liberty file for slow: /home/siliconcompiler/third_party/pdks/skywater/skywater130/libs/sky130hd/v0_0_2/lib/sky130_fd_sc_hd__ss_n40C_1v40.lib.gz
+Reading liberty file for typical: /home/siliconcompiler/third_party/pdks/skywater/skywater130/libs/sky130hd/v0_0_2/lib/sky130_fd_sc_hd__tt_025C_1v80.lib.gz
+Reading ODB: inputs/serv_top.odb
+Reading SDC: inputs/serv_top.sdc
+[INFO ORD-0030] Using 4 thread(s).
+# while (not good enough):
+  # global placement
+  # estimate parasitics
+  # logic remapping, buffering 
+puts "NOP"
+NOP
+SC_METRIC: report_checks -path_delay max
+Startpoint: decode.co_mem_word_$_DFFE_PP__Q
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: state.ibus_cyc_$_DFFE_PP__Q
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+Corner: slow
+
+    Cap   Delay    Time   Description
+----------------------------------------------------------------
+           0.00    0.00   clock clk (rise edge)
+           0.00    0.00   clock network delay (ideal)
+           0.00    0.00 ^ decode.co_mem_word_$_DFFE_PP__Q/CLK (sky130_fd_sc_hd__dfxtp_1)
+   0.06    2.46    2.46 ^ decode.co_mem_word_$_DFFE_PP__Q/Q (sky130_fd_sc_hd__dfxtp_1)
+   0.01    0.94    3.39 v _0584_/Y (sky130_fd_sc_hd__nor2_1)
+   0.01    1.61    5.01 ^ _0586_/Y (sky130_fd_sc_hd__o41ai_2)
+   0.02    0.93    5.94 v _0601_/Y (sky130_fd_sc_hd__nand2_1)
+   0.07    4.80   10.74 ^ _0870_/Y (sky130_fd_sc_hd__a21oi_1)
+   0.00    1.66   12.39 v _0871_/Y (sky130_fd_sc_hd__nor2_1)
+   0.00    0.88   13.27 v _0872_/X (sky130_fd_sc_hd__a21o_1)
+           0.00   13.27 v state.ibus_cyc_$_DFFE_PP__Q/D (sky130_fd_sc_hd__dfxtp_1)
+                  13.27   data arrival time
+
+          10.00   10.00   clock clk (rise edge)
+           0.00   10.00   clock network delay (ideal)
+           0.00   10.00   clock reconvergence pessimism
+                  10.00 ^ state.ibus_cyc_$_DFFE_PP__Q/CLK (sky130_fd_sc_hd__dfxtp_1)
+          -0.82    9.18   library setup time
+                   9.18   data required time
+----------------------------------------------------------------
+                   9.18   data required time
+                 -13.27   data arrival time
+----------------------------------------------------------------
+                  -4.09   slack (VIOLATED)
+
+
+SC_METRIC: report_checks -path_delay min
+Startpoint: mem_if.signbit_$_DFFE_PN__Q
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: mem_if.signbit_$_DFFE_PN__Q
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+Corner: fast
+
+    Cap   Delay    Time   Description
+----------------------------------------------------------------
+           0.00    0.00   clock clk (rise edge)
+           0.00    0.00   clock network delay (ideal)
+           0.00    0.00 ^ mem_if.signbit_$_DFFE_PN__Q/CLK (sky130_fd_sc_hd__dfxtp_1)
+   0.00    0.18    0.18 ^ mem_if.signbit_$_DFFE_PN__Q/Q (sky130_fd_sc_hd__dfxtp_1)
+   0.00    0.03    0.21 v _1067_/Y (sky130_fd_sc_hd__nand2_1)
+   0.00    0.03    0.25 ^ _1068_/Y (sky130_fd_sc_hd__nand2_1)
+           0.00    0.25 ^ mem_if.signbit_$_DFFE_PN__Q/D (sky130_fd_sc_hd__dfxtp_1)
+                   0.25   data arrival time
+
+           0.00    0.00   clock clk (rise edge)
+           0.00    0.00   clock network delay (ideal)
+           0.00    0.00   clock reconvergence pessimism
+                   0.00 ^ mem_if.signbit_$_DFFE_PN__Q/CLK (sky130_fd_sc_hd__dfxtp_1)
+          -0.02   -0.02   library hold time
+                  -0.02   data required time
+----------------------------------------------------------------
+                  -0.02   data required time
+                  -0.25   data arrival time
+----------------------------------------------------------------
+                   0.27   slack (MET)
+
+
+SC_METRIC: unconstrained
+Startpoint: decode.co_mem_word_$_DFFE_PP__Q
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: state.ibus_cyc_$_DFFE_PP__Q
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+Corner: slow
+
+    Cap   Delay    Time   Description
+----------------------------------------------------------------
+           0.00    0.00   clock clk (rise edge)
+           0.00    0.00   clock network delay (ideal)
+           0.00    0.00 ^ decode.co_mem_word_$_DFFE_PP__Q/CLK (sky130_fd_sc_hd__dfxtp_1)
+   0.06    2.46    2.46 ^ decode.co_mem_word_$_DFFE_PP__Q/Q (sky130_fd_sc_hd__dfxtp_1)
+   0.01    0.94    3.39 v _0584_/Y (sky130_fd_sc_hd__nor2_1)
+   0.01    1.61    5.01 ^ _0586_/Y (sky130_fd_sc_hd__o41ai_2)
+   0.02    0.93    5.94 v _0601_/Y (sky130_fd_sc_hd__nand2_1)
+   0.07    4.80   10.74 ^ _0870_/Y (sky130_fd_sc_hd__a21oi_1)
+   0.00    1.66   12.39 v _0871_/Y (sky130_fd_sc_hd__nor2_1)
+   0.00    0.88   13.27 v _0872_/X (sky130_fd_sc_hd__a21o_1)
+           0.00   13.27 v state.ibus_cyc_$_DFFE_PP__Q/D (sky130_fd_sc_hd__dfxtp_1)
+                  13.27   data arrival time
+
+          10.00   10.00   clock clk (rise edge)
+           0.00   10.00   clock network delay (ideal)
+           0.00   10.00   clock reconvergence pessimism
+                  10.00 ^ state.ibus_cyc_$_DFFE_PP__Q/CLK (sky130_fd_sc_hd__dfxtp_1)
+          -0.82    9.18   library setup time
+                   9.18   data required time
+----------------------------------------------------------------
+                   9.18   data required time
+                 -13.27   data arrival time
+----------------------------------------------------------------
+                  -4.09   slack (VIOLATED)
+
+
+SC_METRIC: clock_skew
+Clock clk
+Latency      CRPR       Skew
+alu.add_cy_r_$_DFF_P__Q/CLK ^
+   1.77
+alu.add_cy_r_$_DFF_P__Q/CLK ^
+   1.77      0.00       0.00
+
+SC_METRIC: DRV violators
+max slew
+
+Pin                                    Limit    Slew   Slack
+------------------------------------------------------------
+_0642_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0735_/A                                1.50    2.23   -0.73 (VIOLATED)
+_0736_/A1                               1.50    2.23   -0.73 (VIOLATED)
+_0738_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0740_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0742_/A                                1.50    2.23   -0.73 (VIOLATED)
+_0743_/A1                               1.50    2.23   -0.73 (VIOLATED)
+_0745_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0747_/A                                1.50    2.23   -0.73 (VIOLATED)
+_0748_/A1                               1.50    2.23   -0.73 (VIOLATED)
+_0750_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0752_/A                                1.50    2.23   -0.73 (VIOLATED)
+_0753_/A1                               1.50    2.23   -0.73 (VIOLATED)
+_0759_/A                                1.50    2.23   -0.73 (VIOLATED)
+_0760_/A1                               1.50    2.23   -0.73 (VIOLATED)
+_0761_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0762_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0764_/A                                1.50    2.23   -0.73 (VIOLATED)
+_0765_/A                                1.50    2.23   -0.73 (VIOLATED)
+_0769_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0774_/B1                               1.50    2.23   -0.73 (VIOLATED)
+_0776_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0779_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0782_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0785_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0788_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0797_/A                                1.50    2.23   -0.73 (VIOLATED)
+_0798_/A1                               1.50    2.23   -0.73 (VIOLATED)
+_0801_/A                                1.50    2.23   -0.73 (VIOLATED)
+_0802_/A1                               1.50    2.23   -0.73 (VIOLATED)
+_0803_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0807_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0810_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0813_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0816_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0843_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0846_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0850_/C1                               1.50    2.23   -0.73 (VIOLATED)
+_0851_/A1                               1.50    2.23   -0.73 (VIOLATED)
+_0854_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0857_/A                                1.50    2.23   -0.73 (VIOLATED)
+_0858_/A_N                              1.50    2.23   -0.73 (VIOLATED)
+_0859_/A1                               1.50    2.23   -0.73 (VIOLATED)
+_0860_/S                                1.50    2.23   -0.73 (VIOLATED)
+_0863_/A_N                              1.50    2.23   -0.73 (VIOLATED)
+_0864_/A1                               1.50    2.23   -0.73 (VIOLATED)
+_0865_/A_N                              1.50    2.23   -0.73 (VIOLATED)
+_0866_/A1                               1.50    2.23   -0.73 (VIOLATED)
+_0867_/A_N                              1.50    2.23   -0.73 (VIOLATED)
+_0868_/A1                               1.50    2.23   -0.73 (VIOLATED)
+_0869_/B                                1.50    2.23   -0.73 (VIOLATED)
+_1007_/C1                               1.50    2.23   -0.73 (VIOLATED)
+_1008_/A1                               1.50    2.23   -0.73 (VIOLATED)
+_1009_/S                                1.50    2.23   -0.73 (VIOLATED)
+_1012_/S                                1.50    2.23   -0.73 (VIOLATED)
+_1015_/S                                1.50    2.23   -0.73 (VIOLATED)
+_1018_/S                                1.50    2.23   -0.73 (VIOLATED)
+_1021_/S                                1.50    2.23   -0.73 (VIOLATED)
+_1024_/S                                1.50    2.23   -0.73 (VIOLATED)
+_1127_/B1                               1.50    2.23   -0.73 (VIOLATED)
+i_ibus_ack                              1.51    2.23   -0.72 (VIOLATED)
+_0571_/A                                1.50    1.69   -0.19 (VIOLATED)
+_0596_/B                                1.50    1.69   -0.19 (VIOLATED)
+_0597_/A1                               1.50    1.69   -0.19 (VIOLATED)
+_0604_/C1                               1.50    1.69   -0.19 (VIOLATED)
+_0611_/C1                               1.50    1.69   -0.19 (VIOLATED)
+_0612_/A1                               1.50    1.69   -0.19 (VIOLATED)
+_0618_/A                                1.50    1.69   -0.19 (VIOLATED)
+_0624_/C1                               1.50    1.69   -0.19 (VIOLATED)
+_0631_/B1                               1.50    1.69   -0.19 (VIOLATED)
+_0635_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0643_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0646_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0649_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0653_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0656_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0660_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0663_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0666_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0670_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0673_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0676_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0679_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0682_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0686_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0689_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0693_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0696_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0699_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0702_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0705_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0708_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0711_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0714_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0717_/S                                1.50    1.69   -0.19 (VIOLATED)
+_0731_/A                                1.50    1.69   -0.19 (VIOLATED)
+_1130_/B1                               1.50    1.69   -0.19 (VIOLATED)
+i_dbus_ack                              1.51    1.69   -0.19 (VIOLATED)
+_0871_/B                                1.50    1.66   -0.16 (VIOLATED)
+_0949_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0950_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0951_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0952_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0953_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0954_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0955_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0956_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0957_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0958_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0961_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0962_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0963_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0964_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0965_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0966_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0967_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0968_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0969_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0970_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0973_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0974_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0975_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0976_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0977_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0978_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0979_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0980_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0981_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0982_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0983_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_1006_/A2                               1.50    1.66   -0.16 (VIOLATED)
+_0870_/Y                                1.50    1.66   -0.15 (VIOLATED)
+_0581_/Y                                1.50    1.57   -0.07 (VIOLATED)
+_0597_/C1                               1.50    1.57   -0.07 (VIOLATED)
+_0598_/A2                               1.50    1.57   -0.07 (VIOLATED)
+_0606_/B1                               1.50    1.57   -0.07 (VIOLATED)
+_0607_/A2                               1.50    1.57   -0.07 (VIOLATED)
+_0613_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0614_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0619_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0620_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0625_/B1                               1.50    1.57   -0.07 (VIOLATED)
+_0626_/A2                               1.50    1.57   -0.07 (VIOLATED)
+_0633_/B1                               1.50    1.57   -0.07 (VIOLATED)
+_0634_/A2                               1.50    1.57   -0.07 (VIOLATED)
+_0636_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0637_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0644_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0645_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0647_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0648_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0650_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0651_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0654_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0655_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0658_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0659_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0661_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0662_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0664_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0665_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0667_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0668_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0671_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0672_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0674_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0675_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0677_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0678_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0680_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0681_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0683_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0684_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0687_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0688_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0691_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0692_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0694_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0695_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0697_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0698_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0700_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0701_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0703_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0704_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0706_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0707_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0709_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0710_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0712_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0713_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0715_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0716_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0718_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0719_/A1                               1.50    1.57   -0.07 (VIOLATED)
+_0732_/B                                1.50    1.57   -0.07 (VIOLATED)
+_0733_/A1                               1.50    1.57   -0.07 (VIOLATED)
+
+max capacitance
+
+Pin                                    Limit     Cap   Slack
+------------------------------------------------------------
+i_ibus_ack                              0.13    0.19   -0.06 (VIOLATED)
+i_dbus_ack                              0.13    0.15   -0.02 (VIOLATED)
+_0870_/Y                                0.07    0.08   -0.01 (VIOLATED)
+_0581_/Y                                0.15    0.16   -0.01 (VIOLATED)
+
+SC_METRIC: floating nets
+SC_METRIC: tns
+tns -235.30
+SC_METRIC: setupslack
+worst slack -4.09
+SC_METRIC: holdslack
+worst slack 0.27
+SC_METRIC: fmax
+70.96880426884572 MHz
+SC_METRIC: power
+Power for corner: fast
+Group                  Internal  Switching    Leakage      Total
+                          Power      Power      Power      Power (Watts)
+----------------------------------------------------------------
+Sequential             9.72e-04   3.14e-04   4.54e-06   1.29e-03  60.5%
+Combinational          4.90e-04   3.48e-04   4.60e-06   8.43e-04  39.5%
+Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+----------------------------------------------------------------
+Total                  1.46e-03   6.62e-04   9.13e-06   2.13e-03 100.0%
+                          68.6%      31.0%       0.4%
+Power for corner: slow
+Group                  Internal  Switching    Leakage      Total
+                          Power      Power      Power      Power (Watts)
+----------------------------------------------------------------
+Sequential             4.22e-04   1.54e-04   5.12e-11   5.76e-04  63.2%
+Combinational          1.67e-04   1.68e-04   1.30e-10   3.35e-04  36.8%
+Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+----------------------------------------------------------------
+Total                  5.89e-04   3.22e-04   1.81e-10   9.11e-04 100.0%
+                          64.6%      35.4%       0.0%
+Power for corner: typical
+Group                  Internal  Switching    Leakage      Total
+                          Power      Power      Power      Power (Watts)
+----------------------------------------------------------------
+Sequential             8.16e-04   2.64e-04   1.39e-09   1.08e-03  64.6%
+Combinational          2.99e-04   2.91e-04   1.96e-09   5.91e-04  35.4%
+Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+----------------------------------------------------------------
+Total                  1.12e-03   5.56e-04   3.35e-09   1.67e-03 100.0%
+                          66.7%      33.3%       0.0%
+SC_METRIC: cellarea
+Design area 8846 u^2 11% utilization.

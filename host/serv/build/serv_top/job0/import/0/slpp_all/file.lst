@@ -1,0 +1,17 @@
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_top.v
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_aligner.v
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_alu.v
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_bufreg.v
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_bufreg2.v
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_compdec.v
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_csr.v
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_ctrl.v
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_decode.v
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_immdec.v
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_mem_if.v
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_rf_if.v
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_rf_ram_if.v
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_rf_ram.v
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_rf_top.v
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_state.v
+/home/host/serv/build/serv_top/job0/import/0/slpp_all/lib/work/serv_synth_wrapper.v

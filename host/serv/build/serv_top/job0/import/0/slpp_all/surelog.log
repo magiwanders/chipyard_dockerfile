@@ -1,0 +1,72 @@
+********************************************
+*  SURELOG SystemVerilog  Compiler/Linter  *
+********************************************
+
+Copyright (c) 2017-2022 Alain Dargelas,
+http://www.apache.org/licenses/LICENSE-2.0
+
+VERSION: 1.51
+BUILT  : Apr  4 2023
+DATE   : 2023-04-04.21:54:41
+COMMAND: -nocache -parse -nouhdm /home/host/serv/serv_top.v /home/host/serv/serv_aligner.v /home/host/serv/serv_alu.v /home/host/serv/serv_bufreg.v /home/host/serv/serv_bufreg2.v /home/host/serv/serv_compdec.v /home/host/serv/serv_csr.v /home/host/serv/serv_ctrl.v /home/host/serv/serv_decode.v /home/host/serv/serv_immdec.v /home/host/serv/serv_mem_if.v /home/host/serv/serv_rf_if.v /home/host/serv/serv_rf_ram_if.v /home/host/serv/serv_rf_ram.v /home/host/serv/serv_rf_top.v /home/host/serv/serv_state.v /home/host/serv/serv_synth_wrapper.v -top serv_top +libext+.sv+.v
+
+[INF:CM0023] Creating log file /home/host/serv/build/serv_top/job0/import/0/slpp_all/surelog.log.
+
+[WRN:PA0205] /home/host/serv/serv_top.v:3:1: No timescale set for "serv_top".
+
+[WRN:PA0205] /home/host/serv/serv_aligner.v:1:1: No timescale set for "serv_aligner".
+
+[WRN:PA0205] /home/host/serv/serv_alu.v:2:1: No timescale set for "serv_alu".
+
+[WRN:PA0205] /home/host/serv/serv_bufreg.v:1:1: No timescale set for "serv_bufreg".
+
+[WRN:PA0205] /home/host/serv/serv_bufreg2.v:1:1: No timescale set for "serv_bufreg2".
+
+[WRN:PA0205] /home/host/serv/serv_compdec.v:10:1: No timescale set for "serv_compdec".
+
+[WRN:PA0205] /home/host/serv/serv_csr.v:2:1: No timescale set for "serv_csr".
+
+[WRN:PA0205] /home/host/serv/serv_ctrl.v:2:1: No timescale set for "serv_ctrl".
+
+[WRN:PA0205] /home/host/serv/serv_decode.v:2:1: No timescale set for "serv_decode".
+
+[WRN:PA0205] /home/host/serv/serv_immdec.v:2:1: No timescale set for "serv_immdec".
+
+[WRN:PA0205] /home/host/serv/serv_mem_if.v:2:1: No timescale set for "serv_mem_if".
+
+[WRN:PA0205] /home/host/serv/serv_rf_if.v:2:1: No timescale set for "serv_rf_if".
+
+[WRN:PA0205] /home/host/serv/serv_rf_ram_if.v:2:1: No timescale set for "serv_rf_ram_if".
+
+[WRN:PA0205] /home/host/serv/serv_rf_ram.v:1:1: No timescale set for "serv_rf_ram".
+
+[WRN:PA0205] /home/host/serv/serv_rf_top.v:3:1: No timescale set for "serv_rf_top".
+
+[WRN:PA0205] /home/host/serv/serv_state.v:1:1: No timescale set for "serv_state".
+
+[WRN:PA0205] /home/host/serv/serv_synth_wrapper.v:3:1: No timescale set for "serv_synth_wrapper".
+
+[WRN:EL0534] Cmd line top level is not a top level "serv_top".
+
+[NTE:EL0503] /home/host/serv/serv_top.v:3:1: Top level module "work@serv_top".
+
+[NTE:EL0508] Nb Top level modules: 1.
+
+[NTE:EL0509] Max instance depth: 3.
+
+[NTE:EL0510] Nb instances: 11.
+
+[NTE:EL0511] Nb leaf instances: 0.
+
+[INF:UH0706] Creating UHDM Model...
+
+[  FATAL] : 0
+[ SYNTAX] : 0
+[  ERROR] : 0
+[WARNING] : 18
+[   NOTE] : 5
+
+********************************************
+*   End SURELOG SVerilog Compiler/Linter   *
+********************************************
+

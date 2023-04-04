@@ -1,0 +1,273 @@
+OpenROAD v2.0-7480-g8a4065b09 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+Reading liberty file for fast: /home/siliconcompiler/third_party/pdks/skywater/skywater130/libs/sky130hd/v0_0_2/lib/sky130_fd_sc_hd__ff_100C_1v95.lib.gz
+Reading liberty file for slow: /home/siliconcompiler/third_party/pdks/skywater/skywater130/libs/sky130hd/v0_0_2/lib/sky130_fd_sc_hd__ss_n40C_1v40.lib.gz
+Reading liberty file for typical: /home/siliconcompiler/third_party/pdks/skywater/skywater130/libs/sky130hd/v0_0_2/lib/sky130_fd_sc_hd__tt_025C_1v80.lib.gz
+Reading ODB: inputs/serv_top.odb
+Reading SDC: inputs/serv_top.sdc
+[INFO ORD-0030] Using 2 thread(s).
+# Write LEF
+write_abstract_lef "outputs/${sc_design}.lef"
+if { [lindex [dict get $sc_cfg tool $sc_tool task $sc_task {var} write_cdl] 0] == "true" } {
+  # Write CDL
+  set sc_cdl_masters []
+  foreach lib "$sc_targetlibs $sc_macrolibs" {
+    #CDL files
+    if {[dict exists $sc_cfg library $lib output $sc_stackup cdl]} {
+      foreach cdl_file [dict get $sc_cfg library $lib output $sc_stackup cdl] {
+        lappend sc_cdl_masters $cdl_file
+      }
+    }
+  }
+  write_cdl -masters $sc_cdl_masters "outputs/${sc_design}.cdl"
+}
+# generate SPEF
+# just need to define a corner
+define_process_corner -ext_model_index 0 X
+[INFO RCX-0431] Defined process_corner X with ext_model_index 0
+[INFO RCX-0029] Defined extraction corner X
+foreach pexcorner $sc_pex_corners {
+  set sc_pextool "${sc_tool}-openrcx"
+  set pex_model [lindex [dict get $sc_cfg pdk $sc_pdk pexmodel $sc_pextool $sc_stackup $pexcorner] 0]
+  extract_parasitics -ext_model_file $pex_model
+  write_spef "outputs/${sc_design}.${pexcorner}.spef"
+}
+[INFO RCX-0008] extracting parasitics of serv_top ...
+[INFO RCX-0435] Reading extraction model file /home/siliconcompiler/third_party/pdks/skywater/skywater130/pdk/v0_0_2/pex/openroad/typical.rules ...
+[INFO RCX-0436] RC segment generation serv_top (max_merge_res 50.0) ...
+[INFO RCX-0040] Final 6959 rc segments
+[INFO RCX-0439] Coupling Cap extraction serv_top ...
+[INFO RCX-0440] Coupling threshhold is 0.1000 fF, coupling capacitance less than 0.1000 fF will be grounded.
+[INFO RCX-0043] 8649 wires to be extracted
+[INFO RCX-0442] 62% completion -- 5422 wires have been extracted
+[INFO RCX-0442] 100% completion -- 8649 wires have been extracted
+[INFO RCX-0045] Extract 939 nets, 7863 rsegs, 7863 caps, 5997 ccs
+[INFO RCX-0015] Finished extracting serv_top.
+[INFO RCX-0016] Writing SPEF ...
+[INFO RCX-0443] 939 nets finished
+[INFO RCX-0017] Finished writing SPEF ...
+[INFO RCX-0008] extracting parasitics of serv_top ...
+[INFO RCX-0435] Reading extraction model file /home/siliconcompiler/third_party/pdks/skywater/skywater130/pdk/v0_0_2/pex/openroad/minimum.rules ...
+[INFO RCX-0436] RC segment generation serv_top (max_merge_res 50.0) ...
+[INFO RCX-0040] Final 6876 rc segments
+[INFO RCX-0439] Coupling Cap extraction serv_top ...
+[INFO RCX-0440] Coupling threshhold is 0.1000 fF, coupling capacitance less than 0.1000 fF will be grounded.
+[INFO RCX-0043] 8649 wires to be extracted
+[INFO RCX-0045] Extract 939 nets, 7780 rsegs, 7780 caps, 5969 ccs
+[INFO RCX-0015] Finished extracting serv_top.
+[INFO RCX-0016] Writing SPEF ...
+[INFO RCX-0443] 939 nets finished
+[INFO RCX-0017] Finished writing SPEF ...
+[INFO RCX-0008] extracting parasitics of serv_top ...
+[INFO RCX-0435] Reading extraction model file /home/siliconcompiler/third_party/pdks/skywater/skywater130/pdk/v0_0_2/pex/openroad/maximum.rules ...
+[INFO RCX-0436] RC segment generation serv_top (max_merge_res 50.0) ...
+[INFO RCX-0040] Final 7050 rc segments
+[INFO RCX-0439] Coupling Cap extraction serv_top ...
+[INFO RCX-0440] Coupling threshhold is 0.1000 fF, coupling capacitance less than 0.1000 fF will be grounded.
+[INFO RCX-0043] 8649 wires to be extracted
+[INFO RCX-0045] Extract 939 nets, 7954 rsegs, 7954 caps, 6013 ccs
+[INFO RCX-0015] Finished extracting serv_top.
+[INFO RCX-0016] Writing SPEF ...
+[INFO RCX-0443] 939 nets finished
+[INFO RCX-0017] Finished writing SPEF ...
+set lib_pex [dict create]
+foreach scenario $sc_scenarios {
+  set libcorner [dict get $sc_cfg constraint timing $scenario libcorner]
+  set pexcorner [dict get $sc_cfg constraint timing $scenario pexcorner]
+  dict set lib_pex $libcorner $pexcorner
+}
+# read in spef for timing corners
+foreach corner $sc_corners {
+  set pexcorner [dict get $lib_pex $corner]
+  read_spef -corner $corner \
+    "outputs/${sc_design}.${pexcorner}.spef"
+}
+# Write timing models
+foreach corner $sc_corners {
+  write_timing_model -library_name "${sc_design}_${corner}" \
+    -corner $corner \
+    "outputs/${sc_design}.${corner}.lib"
+}
+SC_METRIC: report_checks -path_delay max
+Startpoint: decode.co_csr_d_sel_$_DFFE_PP__Q
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: o_dbus_adr_$_DFFE_PP__Q_25
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+Corner: slow
+
+    Cap   Delay    Time   Description
+----------------------------------------------------------------
+           0.00    0.00   clock clk (rise edge)
+           0.00    0.00   clock source latency
+   0.02    0.68    0.68 ^ clk (in)
+   0.03    1.42    2.10 ^ clkbuf_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+   0.02    1.25    3.35 ^ clkbuf_2_2_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+   0.04    1.82    5.17 ^ clkbuf_4_9_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+           0.01    5.18 ^ decode.co_csr_d_sel_$_DFFE_PP__Q/CLK (sky130_fd_sc_hd__dfxtp_4)
+   0.09    2.78    7.96 ^ decode.co_csr_d_sel_$_DFFE_PP__Q/Q (sky130_fd_sc_hd__dfxtp_4)
+   0.00    0.50    8.46 v _0822_/Y (sky130_fd_sc_hd__nor2_1)
+   0.01    2.04   10.50 ^ _0823_/Y (sky130_fd_sc_hd__nor4b_1)
+   0.01    1.29   11.79 ^ _0824_/X (sky130_fd_sc_hd__or2_4)
+   0.04    1.25   13.04 ^ rebuffer6/X (sky130_fd_sc_hd__dlymetal6s2s_1)
+   0.00    2.08   15.12 v _0900_/X (sky130_fd_sc_hd__mux2_1)
+           0.00   15.12 v o_dbus_adr_$_DFFE_PP__Q_25/D (sky130_fd_sc_hd__dfxtp_4)
+                  15.12   data arrival time
+
+          10.00   10.00   clock clk (rise edge)
+           0.00   10.00   clock source latency
+   0.02    0.68   10.68 ^ clk (in)
+   0.03    1.42   12.10 ^ clkbuf_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+   0.02    1.25   13.35 ^ clkbuf_2_2_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+   0.03    1.36   14.71 ^ clkbuf_4_10_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+           0.00   14.72 ^ o_dbus_adr_$_DFFE_PP__Q_25/CLK (sky130_fd_sc_hd__dfxtp_4)
+           0.00   14.72   clock reconvergence pessimism
+          -0.38   14.34   library setup time
+                  14.34   data required time
+----------------------------------------------------------------
+                  14.34   data required time
+                 -15.12   data arrival time
+----------------------------------------------------------------
+                  -0.78   slack (VIOLATED)
+
+
+SC_METRIC: report_checks -path_delay min
+Startpoint: state.o_cnt_r_$_SDFF_PP0__Q
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: state.o_cnt_$_SDFF_PP0__Q
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+Corner: fast
+
+    Cap   Delay    Time   Description
+----------------------------------------------------------------
+           0.00    0.00   clock clk (rise edge)
+           0.00    0.00   clock source latency
+   0.02    0.11    0.11 ^ clk (in)
+   0.03    0.19    0.31 ^ clkbuf_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+   0.02    0.16    0.47 ^ clkbuf_2_0_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+   0.03    0.22    0.69 ^ clkbuf_4_3_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+           0.00    0.69 ^ state.o_cnt_r_$_SDFF_PP0__Q/CLK (sky130_fd_sc_hd__dfxtp_2)
+   0.04    0.31    1.00 ^ state.o_cnt_r_$_SDFF_PP0__Q/Q (sky130_fd_sc_hd__dfxtp_2)
+   0.00    0.05    1.06 v _1094_/Y (sky130_fd_sc_hd__a21oi_1)
+           0.00    1.06 v state.o_cnt_$_SDFF_PP0__Q/D (sky130_fd_sc_hd__dfxtp_2)
+                   1.06   data arrival time
+
+           0.00    0.00   clock clk (rise edge)
+           0.00    0.00   clock source latency
+   0.02    0.11    0.11 ^ clk (in)
+   0.03    0.19    0.31 ^ clkbuf_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+   0.02    0.16    0.47 ^ clkbuf_2_3_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+   0.05    0.30    0.77 ^ clkbuf_4_12_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+           0.01    0.78 ^ state.o_cnt_$_SDFF_PP0__Q/CLK (sky130_fd_sc_hd__dfxtp_2)
+           0.00    0.78   clock reconvergence pessimism
+           0.02    0.79   library hold time
+                   0.79   data required time
+----------------------------------------------------------------
+                   0.79   data required time
+                  -1.06   data arrival time
+----------------------------------------------------------------
+                   0.26   slack (MET)
+
+
+SC_METRIC: unconstrained
+Startpoint: decode.co_csr_d_sel_$_DFFE_PP__Q
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: o_dbus_adr_$_DFFE_PP__Q_25
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+Corner: slow
+
+    Cap   Delay    Time   Description
+----------------------------------------------------------------
+           0.00    0.00   clock clk (rise edge)
+           0.00    0.00   clock source latency
+   0.02    0.68    0.68 ^ clk (in)
+   0.03    1.42    2.10 ^ clkbuf_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+   0.02    1.25    3.35 ^ clkbuf_2_2_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+   0.04    1.82    5.17 ^ clkbuf_4_9_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+           0.01    5.18 ^ decode.co_csr_d_sel_$_DFFE_PP__Q/CLK (sky130_fd_sc_hd__dfxtp_4)
+   0.09    2.78    7.96 ^ decode.co_csr_d_sel_$_DFFE_PP__Q/Q (sky130_fd_sc_hd__dfxtp_4)
+   0.00    0.50    8.46 v _0822_/Y (sky130_fd_sc_hd__nor2_1)
+   0.01    2.04   10.50 ^ _0823_/Y (sky130_fd_sc_hd__nor4b_1)
+   0.01    1.29   11.79 ^ _0824_/X (sky130_fd_sc_hd__or2_4)
+   0.04    1.25   13.04 ^ rebuffer6/X (sky130_fd_sc_hd__dlymetal6s2s_1)
+   0.00    2.08   15.12 v _0900_/X (sky130_fd_sc_hd__mux2_1)
+           0.00   15.12 v o_dbus_adr_$_DFFE_PP__Q_25/D (sky130_fd_sc_hd__dfxtp_4)
+                  15.12   data arrival time
+
+          10.00   10.00   clock clk (rise edge)
+           0.00   10.00   clock source latency
+   0.02    0.68   10.68 ^ clk (in)
+   0.03    1.42   12.10 ^ clkbuf_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+   0.02    1.25   13.35 ^ clkbuf_2_2_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+   0.03    1.36   14.71 ^ clkbuf_4_10_0_clk/X (sky130_fd_sc_hd__clkbuf_1)
+           0.00   14.72 ^ o_dbus_adr_$_DFFE_PP__Q_25/CLK (sky130_fd_sc_hd__dfxtp_4)
+           0.00   14.72   clock reconvergence pessimism
+          -0.38   14.34   library setup time
+                  14.34   data required time
+----------------------------------------------------------------
+                  14.34   data required time
+                 -15.12   data arrival time
+----------------------------------------------------------------
+                  -0.78   slack (VIOLATED)
+
+
+SC_METRIC: clock_skew
+Clock clk
+Latency      CRPR       Skew
+state.o_cnt_r_$_SDFF_PP0__Q_1/CLK ^
+   5.27
+o_dbus_adr_$_DFFE_PP__Q_17/CLK ^
+   4.50      0.00       0.76
+
+SC_METRIC: DRV violators
+SC_METRIC: floating nets
+SC_METRIC: tns
+tns -17.44
+SC_METRIC: setupslack
+worst slack -0.78
+SC_METRIC: holdslack
+worst slack 0.26
+SC_METRIC: fmax
+92.76895872789301 MHz
+SC_METRIC: power
+Power for corner: fast
+Group                  Internal  Switching    Leakage      Total
+                          Power      Power      Power      Power (Watts)
+----------------------------------------------------------------
+Sequential             1.11e-03   4.59e-04   4.91e-06   1.58e-03  59.3%
+Combinational          4.02e-04   6.76e-04   5.08e-06   1.08e-03  40.7%
+Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+----------------------------------------------------------------
+Total                  1.52e-03   1.14e-03   9.99e-06   2.66e-03 100.0%
+                          57.0%      42.7%       0.4%
+Power for corner: slow
+Group                  Internal  Switching    Leakage      Total
+                          Power      Power      Power      Power (Watts)
+----------------------------------------------------------------
+Sequential             3.84e-04   2.28e-04   6.30e-11   6.12e-04  55.3%
+Combinational          1.76e-04   3.19e-04   2.28e-10   4.95e-04  44.7%
+Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+----------------------------------------------------------------
+Total                  5.60e-04   5.47e-04   2.91e-10   1.11e-03 100.0%
+                          50.6%      49.4%       0.0%
+Power for corner: typical
+Group                  Internal  Switching    Leakage      Total
+                          Power      Power      Power      Power (Watts)
+----------------------------------------------------------------
+Sequential             8.56e-04   3.87e-04   1.42e-09   1.24e-03  58.8%
+Combinational          3.09e-04   5.63e-04   2.13e-09   8.72e-04  41.2%
+Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+----------------------------------------------------------------
+Total                  1.17e-03   9.50e-04   3.55e-09   2.12e-03 100.0%
+                          55.1%      44.9%       0.0%
+SC_METRIC: cellarea
+Design area 9763 u^2 13% utilization.
