@@ -21,3 +21,5 @@ Remove container:
 
 Remove container and image:
 ```make uninstall```
+
+## Chipyard Usage

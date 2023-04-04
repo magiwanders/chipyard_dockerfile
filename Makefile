@@ -1,6 +1,6 @@
 user = magiwanders
 name = chipyard
-version = 0.4
+version = 0.5
 
 default: help
 
@@ -11,8 +11,8 @@ build:
 	docker image build -t $(user)/$(name):$(version) .
 
 rebuild:
-	make clean
 	make build
+	make clean
 	make container
 	make start
 	
