@@ -37,8 +37,8 @@ RUN conda install -n base conda-lock
 RUN cd home && \
     git clone https://github.com/ucb-bar/chipyard.git && \
     cd chipyard && \
-    # git checkout 1.9.0 && \
-    git checkout 1.8.1 && \
+    git checkout 1.9.0 && \
+    # git checkout 1.8.1 && \
     ./build-setup.sh riscv-tools && \
     echo "source /home/chipyard/env.sh" >> ~/.bashrc 
 
